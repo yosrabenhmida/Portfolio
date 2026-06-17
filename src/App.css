@@ -1,0 +1,230 @@
+@import url("https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Inter:wght@300;400;500&display=swap");
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --o: #b17697;
+  --o2: #f06292;
+  --dark: #0d0d0d;
+  --mid: #111111;
+  --mid2: #1a1a1a;
+  --white: #ffffff;
+  --gray: #888888;
+  --border: rgba(255, 255, 255, 0.08);
+  --font-display: "Syne", sans-serif;
+  --font-body: "Inter", sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--dark);
+  color: var(--white);
+  overflow-x: hidden;
+  cursor: none;
+}
+
+/* ── CURSOR ── */
+#cursor {
+  position: fixed;
+  width: 10px;
+  height: 10px;
+  background: var(--o);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition:
+    width 0.2s,
+    height 0.2s;
+  mix-blend-mode: difference;
+}
+#cursor-ring {
+  position: fixed;
+  width: 38px;
+  height: 38px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9998;
+  transform: translate(-50%, -50%);
+}
+
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar {
+  width: 3px;
+}
+::-webkit-scrollbar-track {
+  background: var(--dark);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--o);
+  border-radius: 2px;
+}
+
+/* ── SECTION BASE ── */
+.section {
+  min-height: 100vh;
+  padding: 120px 80px 80px;
+  position: relative;
+}
+
+.section-label {
+  font-size: 0.65rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--o);
+  margin-bottom: 14px;
+  display: block;
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(2.2rem, 5vw, 4rem);
+  letter-spacing: -1.5px;
+  line-height: 1.05;
+  margin-bottom: 56px;
+}
+
+.section-title span {
+  color: rgba(255, 255, 255, 0.18);
+}
+
+/* ── BUTTONS ── */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--o);
+  color: #fff;
+  padding: 13px 28px;
+  border-radius: 50px;
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  font-weight: 500;
+  border: none;
+  cursor: none;
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
+  text-decoration: none;
+}
+.btn-primary:hover {
+  transform: scale(1.04);
+  box-shadow: 0 8px 30px rgba(193, 45, 121, 0.35);
+}
+
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.6);
+  padding: 12px 28px;
+  border-radius: 50px;
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  font-weight: 500;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  cursor: none;
+  transition:
+    color 0.2s,
+    border-color 0.2s;
+  text-decoration: none;
+}
+.btn-outline:hover {
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+/* ── REVEAL ANIMATIONS ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition:
+    opacity 0.75s ease,
+    transform 0.75s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-40px);
+  transition:
+    opacity 0.75s ease,
+    transform 0.75s ease;
+}
+.reveal-left.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.reveal-right {
+  opacity: 0;
+  transform: translateX(40px);
+  transition:
+    opacity 0.75s ease,
+    transform 0.75s ease;
+}
+.reveal-right.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.stagger > * {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 0.6s ease,
+    transform 0.6s ease;
+}
+.stagger.visible > *:nth-child(1) {
+  opacity: 1;
+  transform: none;
+  transition-delay: 0s;
+}
+.stagger.visible > *:nth-child(2) {
+  opacity: 1;
+  transform: none;
+  transition-delay: 0.1s;
+}
+.stagger.visible > *:nth-child(3) {
+  opacity: 1;
+  transform: none;
+  transition-delay: 0.2s;
+}
+.stagger.visible > *:nth-child(4) {
+  opacity: 1;
+  transform: none;
+  transition-delay: 0.3s;
+}
+.stagger.visible > *:nth-child(5) {
+  opacity: 1;
+  transform: none;
+  transition-delay: 0.4s;
+}
+.stagger.visible > *:nth-child(6) {
+  opacity: 1;
+  transform: none;
+  transition-delay: 0.5s;
+}
+
+@media (max-width: 900px) {
+  .section {
+    padding: 100px 24px 60px;
+  }
+}
